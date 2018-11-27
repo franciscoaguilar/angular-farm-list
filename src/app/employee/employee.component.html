@@ -1,0 +1,102 @@
+<div class="containter-fluid">
+  <div class="row">
+    <h1 class="text-center">Daily List</h1>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Hours</td>
+        <td>Rate</td>
+        <td>Edit</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <ng-container>
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.hours }}</td>
+          <td>{{ employee.rate }}</td>
+          <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal" (click)="getEditedEmployee(employee)"></button></td>
+        </ng-container>
+      </tr>
+    </tbody>
+  </table>
+  <!-- <form (ngSubmit)="addEmployee()">
+  <div class="form-group">
+    <label for="name"></label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Name" [(ngModel)]="newEmployee.name">
+  </div>
+  <button class="btn btn-success">Add</button>
+</form> -->
+
+  <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addEmployeeModal" ></button></td>
+
+  <div class="modal fade" id="addEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Edit</h4>
+        </div>
+        <div class="modal-body">
+          <ul class="list-group">
+                  {{diagnostic}}
+        <form (ngSubmit)="addEmployee()">
+          {{diagnostic}}
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="newEmployee.name">
+          </div>
+          <div class="form-group">
+            <label for="hours">Hours:</label>
+            <input type="text" class="form-control" id="hours" name="hours" [(ngModel)]="newEmployee.hours">
+          </div>
+          <div class="form-group">
+            <label for="rate">Rate:</label>
+            <input type="text" class="form-control" id="rate" name="rate" [(ngModel)]="newEmployee.rate">
+          </div>
+          <button type="submit" class="btn btn-success" data-dismiss="modal">add</button>
+        </form>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Edit</h4>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group">
+          <form action="">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="name" name="name" [(ngModel)]="editedEmployee.name">
+        </div>
+        <div class="form-group">
+          <label for="name">Hours:</label>
+          <input type="text" class="form-control" id="hours" name="hours" [(ngModel)]="editedEmployee.hours">
+        </div>
+        <div class="form-group">
+          <label for="name">Rate:</label>
+          <input type="text" class="form-control" id="rate" name="rate" [(ngModel)]="editedEmployee.rate">
+        </div>
+        <button class="btn btn-success" data-dismiss="modal">Save</button>
+      </form>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div> -->

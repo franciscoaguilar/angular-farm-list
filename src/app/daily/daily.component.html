@@ -1,0 +1,27 @@
+<div class="containter-fluid">
+  <div class="row">
+    <h1 class="text-center">
+
+    </h1>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Hours</td>
+        <td>Rate</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <ng-containter>
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.hours }}</td>
+          <td>{{ employee.rate }}</td>
+        </ng-containter>
+      </tr>
+    </tbody>
+  </table>
+</div>
