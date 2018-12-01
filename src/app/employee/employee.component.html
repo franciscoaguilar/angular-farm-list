@@ -1,36 +1,56 @@
 <div class="containter-fluid">
   <div class="row">
-    <h1 class="text-center">Daily List</h1>
+    <h1 class="text-center">Valley Prestige</h1>
+    <h3 class ="text-center">Reedley, CA</h3>
+    <p class = "text-center">Type of Work: Pick Kiwi </p>
+    <p class= "text-center">Crew: Jose Armenta</p>
+    <h3 class="text-center">{{today | date:'fullDate'}}</h3>
   </div>
   <table class="table table-striped">
     <thead>
       <tr>
-        <td>Id</td>
-        <td>Name</td>
+    <td>
+      <span (click)="changeFilterBy('id')">ID</span>
+      <span (click)="toggleReverse()" class="dropdown">
+        <i class="caret"></i>
+      </span>
+    </td>
+    <td>
+      <span (click)="changeFilterBy('firstName')">First Name</span>
+      <!-- <span (click)="toggleReverse()" class="dropdown">
+        <i class="caret"></i>
+      </span> -->
+    </td>
+    <td>
+      <span (click)="changeFilterBy('lastName')">Last Name</span>
+      <!-- <span (click)="toggleReverse()" class="dropdown">
+        <i class="caret"></i>
+      </span> -->
+    </td>
         <td>Hours</td>
         <td>Rate</td>
         <td>Edit</td>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let employee of employees">
-        <ng-container>
+      <tr *ngFor="let employee of employees | alphabetical:filterBy">
+        <ng-container *ngIf="!employee.isDeleted">
           <td>{{ employee.id }}</td>
-          <td>{{ employee.name }}</td>
+          <td>{{ employee.firstName }}</td>
+          <td>{{ employee.lastName }}</td>
           <td>{{ employee.hours }}</td>
           <td>{{ employee.rate }}</td>
+          <!-- <td>today: {{ employee.date | date:'fullDate'}}</td> -->
+
+
           <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal" (click)="getEditedEmployee(employee)"></button></td>
+          <td><button class="btn btn-danger" type="button" (click)="toggleDeleteEmployee(employee)">Delete</button></td>
         </ng-container>
       </tr>
     </tbody>
   </table>
-  <!-- <form (ngSubmit)="addEmployee()">
-  <div class="form-group">
-    <label for="name"></label>
-    <input type="text" class="form-control" id="name" name="name" placeholder="Name" [(ngModel)]="newEmployee.name">
-  </div>
-  <button class="btn btn-success">Add</button>
-</form> -->
+<td>Total hours</td>
+
 
   <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addEmployeeModal" ></button></td>
 
@@ -45,13 +65,15 @@
         </div>
         <div class="modal-body">
           <ul class="list-group">
-                  {{diagnostic}}
-        <form (ngSubmit)="addEmployee()">
-          {{diagnostic}}
-          <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="newEmployee.name">
-          </div>
+          <form (ngSubmit)="addEmployee()">
+            <div class="form-group">
+              <label for="firstName">First Name:</label>
+              <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="newEmployee.firstName">
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name:</label>
+              <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="newEmployee.lastName">
+            </div>
           <div class="form-group">
             <label for="hours">Hours:</label>
             <input type="text" class="form-control" id="hours" name="hours" [(ngModel)]="newEmployee.hours">
@@ -60,7 +82,7 @@
             <label for="rate">Rate:</label>
             <input type="text" class="form-control" id="rate" name="rate" [(ngModel)]="newEmployee.rate">
           </div>
-          <button type="submit" class="btn btn-success" data-dismiss="modal">add</button>
+          <button class="btn btn-success">Save</button>
         </form>
           </ul>
         </div>
@@ -69,7 +91,7 @@
   </div>
 </div>
 
-<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -82,8 +104,12 @@
         <ul class="list-group">
           <form action="">
         <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" class="form-control" id="name" name="name" [(ngModel)]="editedEmployee.name">
+          <label for="firstName">First Name:</label>
+          <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="editedEmployee.firstName">
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name:</label>
+          <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="editedEmployee.lastName">
         </div>
         <div class="form-group">
           <label for="name">Hours:</label>
@@ -99,4 +125,4 @@
       </div>
     </div>
   </div>
-</div> -->
+</div>

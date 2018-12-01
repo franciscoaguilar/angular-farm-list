@@ -1,6 +1,7 @@
 export class Employee {
   id: number;
-  name: string;
+  firstName: string;
+  lastName: string;
   hours: number;
   rate: number;
   isDeleted: false;
