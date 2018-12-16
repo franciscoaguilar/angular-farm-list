@@ -1,27 +1,51 @@
 <div class="containter-fluid">
   <div class="row">
     <h1 class="text-center">
-
+      Valley
     </h1>
+    <h3 class="text-center">{{date | date: "fullDate" }} </h3>
   </div>
   <table class="table table-striped">
     <thead>
       <tr>
-        <td>Id</td>
-        <td>Name</td>
+        <td>
+          <span (click)="changeFilterBy('id')">ID</span>
+          <span (click)="toggleReverse()" class="dropdown">
+            <i class="caret"></i>
+          </span>
+        </td>
+        <td>
+    <span (click)="changeFilterBy('firstName')">First Name</span>
+    <span (click)="toggleReverse()" class="dropdown">
+      <i class="caret"></i>
+    </span>
+  </td>
+  <td>
+    <span (click)="changeFilterBy('lastName')">Last Name</span>
+    <span (click)="toggleReverse()" class="dropdown">
+      <i class="caret"></i>
+    </span>
+  </td>
         <td>Hours</td>
         <td>Rate</td>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let employee of employees">
-        <ng-containter>
-          <td>{{ employee.id }}</td>
-          <td>{{ employee.name }}</td>
-          <td>{{ employee.hours }}</td>
-          <td>{{ employee.rate }}</td>
-        </ng-containter>
+        <td>{{ employee.id }}</td>
+        <td>{{ employee.firstName }}</td>
+        <td>{{ employee.lastName }}</td>
+        <td>{{ employee.hours }}</td>
+        <td>{{ employee.rate }}</td>
+        <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal" (click)="editEmployee(employee._id)">Edit</button></td>
+        <td><button type="button" name="button" (click)="deleteEmployee(employee._id)">Delete Forever</button></td>
+
       </tr>
     </tbody>
   </table>
 </div>
+
+<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addEmployeeModal"><a routerLink="/create">create</a></button>
+
+<button class="btn btn-primary" type="button" (click)="submitDailyList(employees)">create</button>
+<li><a routerLink="/create">create</a></li>

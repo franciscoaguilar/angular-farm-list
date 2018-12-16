@@ -1,9 +1,8 @@
 export interface EmployeeInterface {
-  id: number;
 firstName: string;
-lastName:string;
+lastName: string;
   hours: number;
   rate: number;
-  isDeleted?: boolean;
+  status?: string;
 
 }

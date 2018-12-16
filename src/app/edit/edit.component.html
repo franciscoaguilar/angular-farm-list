@@ -1,0 +1,40 @@
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Edit:{{ editedEmployee.firstName }}</h4>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group">
+          <form action="">
+        <div class="form-group">
+          <label for="firstName">First Name:</label>
+          <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="editedEmployee.firstName">
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name:</label>
+          <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="editedEmployee.lastName">
+        </div>
+        <div class="form-group">
+          <label for="hours">Hours:</label>
+          <input type="text" class="form-control" id="hours" name="hours" [(ngModel)]="editedEmployee.hours">
+        </div>
+        <div class="form-group">
+          <label for="rate">Rate:</label>
+          <input type="text" class="form-control" id="rate" name="rate" [(ngModel)]="editedEmployee.rate">
+        </div>
+        <div class="form-group">
+          <label for="status">status</label>
+          <input type="text" class="form-control" id="status" name="status" [(ngModel)]="editedEmployee.status">
+        </div>
+        <button class="btn btn-success" data-dismiss="modal">Save</button>
+      </form>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
