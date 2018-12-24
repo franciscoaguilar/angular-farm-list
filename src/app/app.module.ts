@@ -8,7 +8,7 @@ import { DatePipe } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { EmployeeComponent } from './employee/employee.component';
+// import { EmployeeComponent } from './employee/employee.component';
 import { AlphabeticalPipe } from './pipes/alphabetical.pipe';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
@@ -16,19 +16,23 @@ import { EmployeeService } from './services/employee.service';
 import { DailyComponent } from './daily/daily.component';
 import { WeeklyComponent } from './weekly/weekly.component';
 import { ReversePipe } from './pipes/reverse.pipe';
+import { AddComponent } from './add/add.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    EmployeeComponent,
+    // EmployeeComponent,
     AlphabeticalPipe,
     EditComponent,
     CreateComponent,
     DailyComponent,
     WeeklyComponent,
-    ReversePipe
+    ReversePipe,
+    AddComponent,
+    NotFoundComponent
 
   ],
   imports: [

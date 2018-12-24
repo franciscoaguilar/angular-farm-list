@@ -6,20 +6,24 @@
         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">Edit:{{ editedEmployee.firstName }}</h4>
+        <h4 class="modal-title" id="myModalLabel">Edit:{{ employee.firstName }}</h4>
       </div>
       <div class="modal-body">
         <ul class="list-group">
-          <form action="">
+
+
+      <form  class="edit-form" >
         <div class="form-group">
           <label for="firstName">First Name:</label>
-          <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="editedEmployee.firstName">
+          <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="employee.firstName">
+          {{editedEmployee.firstName}}
+
         </div>
         <div class="form-group">
           <label for="lastName">Last Name:</label>
-          <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="editedEmployee.lastName">
+          <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="employee.lastName">
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="hours">Hours:</label>
           <input type="text" class="form-control" id="hours" name="hours" [(ngModel)]="editedEmployee.hours">
         </div>
@@ -30,8 +34,8 @@
         <div class="form-group">
           <label for="status">status</label>
           <input type="text" class="form-control" id="status" name="status" [(ngModel)]="editedEmployee.status">
-        </div>
-        <button class="btn btn-success" data-dismiss="modal">Save</button>
+        </div> -->
+        <button class="btn btn-success" data-dismiss="modal" (click)=updateEmployee(employee)>Save</button>
       </form>
         </ul>
       </div>

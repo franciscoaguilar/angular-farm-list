@@ -35,9 +35,11 @@
         <td>{{ employee.id }}</td>
         <td>{{ employee.firstName }}</td>
         <td>{{ employee.lastName }}</td>
-        <td>{{ employee.hours }}</td>
-        <td>{{ employee.rate }}</td>
-        <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal" (click)="editEmployee(employee._id)">Edit</button></td>
+        <td>{{ employee.employeeDetails.hours }}</td>
+        <td>{{ employee.employeeDetails.rate }}</td>
+        <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addEmployeeDetailModal" (click)="addEmployeeDetails(employee._id)"><a>Add Details</a></button>
+         </td>
+        <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal" [routerLink] ="['/edit',employee._id ]">Edit</button></td>
         <td><button type="button" name="button" (click)="deleteEmployee(employee._id)">Delete Forever</button></td>
 
       </tr>
@@ -45,7 +47,11 @@
   </table>
 </div>
 
+
+
 <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addEmployeeModal"><a routerLink="/create">create</a></button>
+
+
 
 <button class="btn btn-primary" type="button" (click)="submitDailyList(employees)">create</button>
 <li><a routerLink="/create">create</a></li>

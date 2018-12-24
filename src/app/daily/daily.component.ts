@@ -5,6 +5,7 @@ import { EmployeeService } from '../services/employee.service';
 
 import { EmployeeInterface } from '../interfaces/employee-interface';
 import { DatePipe } from '@angular/common';
+import { Employee } from '../models/employee';
 
 
 
@@ -19,6 +20,7 @@ export class DailyComponent implements OnInit {
   filter = '';
   shouldReverse = false;
   date = Date.now();
+  editedEmployee: EmployeeInterface = new Employee();
 
   constructor(private employeeService: EmployeeService, private router: Router, public datepipe: DatePipe) { }
 
@@ -40,8 +42,17 @@ fetchEmployees(filter?: String) {
    this.employees = filteredEmployees;
  }
 }
-editEmployee(id){
-  this.router.navigate([`/edit/${id}`]);
+
+//this is the same as using rouerlink to send to a different componenet
+// getEditedEmployee(employee: Employee){
+//   this.editedEmployee = employee;
+//   // this.employeeService.selectedEmployee = employee;
+//   this.router.navigate([`/edit/${employee._id}`]);
+// }
+
+
+addEmployeeDetails(id){
+  this.router.navigate([`/details/${id}`]);
 }
 deleteEmployee(id) {
   this.employeeService.deleteEmployee(id).subscribe(() =>{
@@ -63,9 +74,18 @@ get isReversed() { return this.shouldReverse; }
 toggleReverse() { this.shouldReverse = !this.shouldReverse; }
 
 submitDailyList(employees) {
- this.employeeService.getEmployees().forEach((date) => {date.date = "7/7"})
+
+}
+apple = {
+  colors:{
+    first: "blue",
+    second: "red"
+  },
+  taste: "good"
 }
 ngOnInit() {
   this.fetchEmployees('all');
+  console.log(this.apple.colors.second);
+
 }
 }

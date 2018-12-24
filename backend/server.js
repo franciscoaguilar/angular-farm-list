@@ -2,8 +2,10 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
+import MongoClient from 'mongoose';
 
-import Employee from './models/Employee'
+import Employee from './models/Employee';
+import EmployeeDetails from './models/Employee-details';
 
 const app = express();
 const router = express.Router();
@@ -11,9 +13,9 @@ const router = express.Router();
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/employees');
+MongoClient.connect('mongodb://localhost:27017/employees', { useNewUrlParser: true });
 
-const connection = mongoose.connection;
+const connection = MongoClient.connection;
 
 connection.once('open', () => {
   console.log('mongodb database connection established ');
@@ -40,7 +42,9 @@ router.route('/employees/:id').get((req, res) => {
 
 router.route('/employees/add').post((req, res) => {
   console.log('requested body',req.body);
-  let employee = new Employee(req.body);
+  let employee = new Employee({
+    firstName: req.body.firstName,
+  lastName: req.body.lastName});
   employee.save()
     .then(employee => {
       res.status(200).json({
@@ -51,25 +55,55 @@ router.route('/employees/add').post((req, res) => {
     res.status(400).send('failed to create new record');
   });
 });
+//attemptint to add missing piece
+// router.route('/employees/add/details/:id').post((req, res) => {
+//   Employee.findById(req.params.id, (err, employee) => {
+//     if (!employee)
+//       return new Error('Cold not load document')
+//       else{
+//   console.log('requested details', req.body);
+//   let employeeDetails = new EmployeeDetails(req.body);
+//   employeeDetails.save()
+//   .then(employeeDetails => {
+//     res.status(200).json({
+//       'employee-detals': 'added succesfully details'
+//     });
+//   })
+//   .catch(err => {
+//     res.status(400).send('failed to create new record');
+//   });
+// }
+// });
+// });
 
-router.route('/employees/update/:id').post((req, res) => {
-  Employee.findById(req.params.id, (err, employee) => {
-    if (!employee)
-      return next(new Error('Cold not load document'));
+
+router.route('/employees/details/:id').post((req, res) => {
+Employee.findOneAndUpdate({_id:req.params.id}, (err, employee) => {
+  if (!employee)
+    return new Error('Cold not load document');
     else{
-      employee.firstName = req.body.firstName;
-      employee.lastName = req.body.lastName;
-      employee.hours = req.body.hours;
-      employee.rate = req.body.rate;
-      employee.status = req.body.status;
+    {$push: {employeeDetails: {hours: req.body.hours
+ }}};
+    employee.save().then(employee => {
+      res.json('update done');
+    }).catch(err => {
+      res.status(400).send('update failed')
+    });
+  }
 
-      employee.save().then(employee => {
-        res.json('update done');
-      }).catch(err => {
-        res.status(400).send('update failed')
-      });
-    }
-  });
+})
+});
+
+
+
+router.route('/employees/edit/:id').put(async (req, res) =>{
+  // const { id } = req.params;
+  const employee = {
+  firstName: req.body.firstName,
+  lastName: req.body.lastName
+  }
+  await Employee.findOneAndUpdate({_id: req.params.id}, {$set: employee}, {new: true});
+  res.json({status: 'Employeee Updated '});
 });
 
 router.route('/employees/delete/:id').delete((req, res) => {

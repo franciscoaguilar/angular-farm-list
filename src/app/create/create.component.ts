@@ -4,6 +4,9 @@ import { EmployeeInterface } from '../interfaces/employee-interface';
 import { Employee } from '../models/employee';
 import { Router } from '@angular/router';
 
+import { EmployeeDetails } from '../models/employee-details';
+
+
 
 @Component({
   selector: 'app-create',
@@ -16,20 +19,26 @@ export class CreateComponent implements OnInit {
 
    newEmployee: EmployeeInterface = new Employee;
      employees: EmployeeInterface[];
+     newEmployeeDetails: EmployeeDetails
+
 
    addEmployees(){
      this.employeeService
      .addEmployees(this.newEmployee)
      .subscribe((data: EmployeeInterface[]) => {
-       this.employees = data;
+       // this.employees = data;
        console.log('added employee..');
        console.log(this.employees);
  });
 }
 
+console(){
+  console.log(this.newEmployee);
+}
+ngOnInit() {
+
+}
 
 
-  ngOnInit() {
-  }
 
 }
