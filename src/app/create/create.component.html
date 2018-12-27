@@ -12,7 +12,6 @@
         <ul class="list-group">
 
         <form  (ngSubmit)="addEmployees()">
-          <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="newEmployee._id">
           <div class="form-group">
             <label for="firstName">First Name:</label>
             <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="newEmployee.firstName">

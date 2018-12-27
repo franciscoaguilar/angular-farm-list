@@ -4,7 +4,7 @@ import { Observable } from 'rxjs'
 import { EmployeeDetailsInterface } from '../interfaces/employee-details-interface';
 import{ Employee } from '../models/employee';
 import { EmployeeInterface } from '../interfaces/employee-interface';
-
+import { EmployeeDetails } from '../models/employee-details';
 
 @Injectable({
   providedIn: 'root'
@@ -35,12 +35,11 @@ getEmployee(id: string){
 
   return this.http.post(`${this.url}/employees/add`, newEmployee);
 }
-addEmployeeDetails(id, newEmployeeDetails): Observable<any>{
-
-return this.http.post(`${this.url}/employees/details/${id}`, newEmployeeDetails);
+addEmployeeDetails(employeeDetails:  EmployeeDetailsInterface){
+return this.http.post(`${this.url}/employees/add/details/${employeeDetails._id}`, employeeDetails);
 }
-editEmployee(employee:  Employee){
-  return this.http.put(`${this.url}/employees/edit/${employee._id}`, employee);
+editEmployee(editedEmployee:  Employee){
+  return this.http.put(`${this.url}/employees/edit/${editedEmployee._id}`, editedEmployee);
 }
 
 

@@ -1,7 +1,7 @@
 export class EmployeeDetails {
-
-    hours: number;
-    rate: number;
-    status: string;
+    _id?: string;
+    hours: string;
+    rate: string;
+    // status: string;
 
 }

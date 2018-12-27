@@ -1,11 +1,12 @@
-import mongoose from 'mongoose';
-import { EmployeeDetails } from '../models/Employee-details';
-
+// import mongoose from 'mongoose';
+const mongoose = require('mongoose');
+// import { EmployeeDetails } from '../models/Employee-details';
+const EmployeeDetails = require('../models/Employee-details')
 const Schema = mongoose.Schema;
 
 
-
-let Employee = new Schema({
+//change the employeechema back to employee
+let EmployeeSchema = new Schema({
   firstName: {
     type: String
   },
@@ -14,7 +15,7 @@ let Employee = new Schema({
   },
   employeeDetails: {
       type: [EmployeeDetails],
-    
+
     }
 });
 
@@ -42,4 +43,7 @@ let Employee = new Schema({
 //
 // });
 
-export default mongoose.model('Employee', Employee);
+const Employee = mongoose.model('employee', EmployeeSchema);
+
+module.exports = Employee;
+// export default mongoose.model('Employee', Employee);

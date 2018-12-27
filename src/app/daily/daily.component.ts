@@ -51,9 +51,9 @@ fetchEmployees(filter?: String) {
 // }
 
 
-addEmployeeDetails(id){
-  this.router.navigate([`/details/${id}`]);
-}
+// addEmployeeDetails(id){
+//   this.router.navigate([`/details/${id}`]);
+// }
 deleteEmployee(id) {
   this.employeeService.deleteEmployee(id).subscribe(() =>{
     console.log('delet');
@@ -83,9 +83,16 @@ apple = {
   },
   taste: "good"
 }
+
+
 ngOnInit() {
   this.fetchEmployees('all');
   console.log(this.apple.colors.second);
 
+
+
+}
+ngOnChange(){
+    this.fetchEmployees('all');
 }
 }

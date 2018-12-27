@@ -55,46 +55,48 @@ router.route('/employees/add').post((req, res) => {
     res.status(400).send('failed to create new record');
   });
 });
-//attemptint to add missing piece
-// router.route('/employees/add/details/:id').post((req, res) => {
-//   Employee.findById(req.params.id, (err, employee) => {
-//     if (!employee)
-//       return new Error('Cold not load document')
-//       else{
-//   console.log('requested details', req.body);
-//   let employeeDetails = new EmployeeDetails(req.body);
-//   employeeDetails.save()
-//   .then(employeeDetails => {
-//     res.status(200).json({
-//       'employee-detals': 'added succesfully details'
-//     });
-//   })
-//   .catch(err => {
-//     res.status(400).send('failed to create new record');
-//   });
-// }
-// });
-// });
 
 
-router.route('/employees/details/:id').post((req, res) => {
-Employee.findOneAndUpdate({_id:req.params.id}, (err, employee) => {
-  if (!employee)
-    return new Error('Cold not load document');
-    else{
-    {$push: {employeeDetails: {hours: req.body.hours
- }}};
-    employee.save().then(employee => {
-      res.json('update done');
-    }).catch(err => {
-      res.status(400).send('update failed')
-    });
-  }
 
-})
+
+
+const joe = new Employee({
+firstName: 'Franc',
+lastName: 'agu',
+employeeDetails: [{ hours: '7', rate: 5}]
 });
+console.log(joe.employeeDetails[0].hours);
+// joe.save()
+// .then(() => Employeee.findOne({ firstName: 'Franc'}))
+// .then((employee) => {
+//   assert(employee.employeeDetails[0].hours === '7');
+//   console.log('hello');
+//
+//   done();
+// }).catch(done);
+// });
+//works
+router.route('/employees/add/details/:id').post(async (req, res) =>{
+  const employee = ({
+    employeeDetails: req.body.employeeDetails
+  });
+  await Employee.findOneAndUpdate({_id: req.params.id}, {$push: employee});
+    res.json({status: 'Added details '});
+})
 
-
+//  router.route('/employees/add/details/:id').put(async (req, res) =>{
+// await Employee.findByIdAndUpdate(
+//     info._id,
+//     {$push: {"employeeDetails": {hours: req.body.hours, rate: req.body.rate}}},
+//     {safe: true, upsert: true, new: true},
+//
+//     function(err, model) {
+//         console.log(err);
+//     }
+//
+// );
+//  res.json({status: 'Added details '});
+// });
 
 router.route('/employees/edit/:id').put(async (req, res) =>{
   // const { id } = req.params;

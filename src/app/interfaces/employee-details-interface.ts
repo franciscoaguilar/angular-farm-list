@@ -1,6 +1,7 @@
 export interface EmployeeDetailsInterface {
-  hours: number;
-  rate: number;
-  status: string;
+    _id?: string;
+  hours: string;
+  rate: string;
+  // status: string;
 
 }

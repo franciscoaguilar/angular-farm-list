@@ -35,7 +35,7 @@
           <label for="status">status</label>
           <input type="text" class="form-control" id="status" name="status" [(ngModel)]="editedEmployee.status">
         </div> -->
-        <button class="btn btn-success" data-dismiss="modal" (click)=updateEmployee(employee)>Save</button>
+        <button class="btn btn-success" data-dismiss="modal" routerLink='/daily'(click)=updateEmployee(employee)>Save</button>
       </form>
         </ul>
       </div>

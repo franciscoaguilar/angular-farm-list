@@ -1,0 +1,34 @@
+<div class="modal fade" id="addEmployeeDetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Edit</h4>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group">
+
+        <form>
+
+        <div class="form-group">
+          <label for="hours">Hours:</label>
+          <input type="text" class="form-control" id="hours" name="hours" [(ngModel)]="employee.employeeDetails.hours">
+        </div>
+        <div class="form-group">
+          <label for="rate">Rate:</label>
+          <input type="text" class="form-control" id="rate" name="rate" [(ngModel)]="employee.employeeDetails.rate">
+        </div>
+        <!-- <div class="form-group">
+          <label for="status">status</label>
+          <input type="text" class="form-control" id="status" name="status" [(ngModel)]="employee.status">
+        </div> -->
+        <button class="btn btn-success" routerLink='/daily' (click)="addEmployeeDetails(employeee)">Save</button>
+      </form>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -19,11 +19,11 @@
 import { EmployeeDetails } from  '../models/employee-details';
 
 export class Employee {
-  constructor(_id ='', firstName ='', lastName=''){
-    this._id = _id;
-    this.firstName = firstName;
-    this.lastName =  lastName
-  }
+  // constructor(_id ='', firstName ='', lastName=''){
+  //   this._id = _id;
+  //   this.firstName = firstName;
+  //   this.lastName =  lastName
+  // }
   _id?: string;
   firstName: string;
   lastName: string;

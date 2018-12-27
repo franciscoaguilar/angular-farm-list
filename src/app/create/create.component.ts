@@ -26,7 +26,7 @@ export class CreateComponent implements OnInit {
      this.employeeService
      .addEmployees(this.newEmployee)
      .subscribe((data: EmployeeInterface[]) => {
-       // this.employees = data;
+       this.employees = data;
        console.log('added employee..');
        console.log(this.employees);
  });

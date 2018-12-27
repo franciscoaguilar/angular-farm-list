@@ -37,10 +37,10 @@
         <td>{{ employee.lastName }}</td>
         <td>{{ employee.employeeDetails.hours }}</td>
         <td>{{ employee.employeeDetails.rate }}</td>
-        <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addEmployeeDetailModal" (click)="addEmployeeDetails(employee._id)"><a>Add Details</a></button>
+        <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addEmployeeDetailModal" [routerLink]="['/add/details', employee._id]"><a>Add Details</a></button>
          </td>
         <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal" [routerLink] ="['/edit',employee._id ]">Edit</button></td>
-        <td><button type="button" name="button" (click)="deleteEmployee(employee._id)">Delete Forever</button></td>
+        <td><button type="button" name="button" routerLink="/daily"(click)="deleteEmployee(employee._id)">Delete Forever</button></td>
 
       </tr>
     </tbody>

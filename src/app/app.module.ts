@@ -18,6 +18,7 @@ import { WeeklyComponent } from './weekly/weekly.component';
 import { ReversePipe } from './pipes/reverse.pipe';
 import { AddComponent } from './add/add.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     WeeklyComponent,
     ReversePipe,
     AddComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    EmployeeDetailsComponent
 
   ],
   imports: [

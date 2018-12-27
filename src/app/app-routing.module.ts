@@ -11,6 +11,7 @@ import { EditComponent } from './edit/edit.component';
 import { DailyComponent } from './daily/daily.component';
 import { AddComponent } from './add/add.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
 { path: 'daily', component: DailyComponent },
 
 // { path: '', redirectTo: 'daily', pathMatch: 'full' }
-{ path: 'details/:id', component: AddComponent },
+// { path: 'details/:id', component: AddComponent },
+{ path: 'add/details/:id', component: EmployeeDetailsComponent },
 { path: '**', component: NotFoundComponent }
 
 ];
